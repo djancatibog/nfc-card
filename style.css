@@ -161,3 +161,13 @@ a:focus-visible {
   content: "Copied ✓";
   color: #fff;
 }
+/* Group labels: Professional / Social */
+.group-label {
+  margin: 26px 6px 8px;
+  text-align: left;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #666;
+}
+.group-label + .links { margin-top: 0; }
