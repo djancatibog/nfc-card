@@ -38,6 +38,9 @@ body {
 .card > *:nth-child(5) { animation-delay: 0.33s; }
 .card > *:nth-child(6) { animation-delay: 0.40s; }
 .card > *:nth-child(7) { animation-delay: 0.47s; }
+.card > *:nth-child(8) { animation-delay: 0.54s; }
+.card > *:nth-child(9) { animation-delay: 0.61s; }
+.card > *:nth-child(10) { animation-delay: 0.68s; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
