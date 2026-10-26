@@ -1,23 +1,47 @@
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0f172a;
-  font-family: system-ui, sans-serif;
-  color: #e2e8f0;
+  padding: 24px;
+  background-color: #000;
+  background-image: radial-gradient(ellipse at 50% 0%, #161616 0%, #000 65%);
+  background-repeat: no-repeat;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .card {
-  width: 90%;
+  width: 100%;
   max-width: 380px;
-  padding: 32px 24px;
+  padding: 44px 30px 32px;
   text-align: center;
-  background: #1e293b;
+  background: linear-gradient(180deg, #101010 0%, #080808 100%);
+  border: 1px solid #1f1f1f;
   border-radius: 20px;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(255, 255, 255, 0.03);
+}
+
+/* Fade-in, one element after another */
+.card > * {
+  animation: fadeUp 0.6s ease both;
+}
+.card > *:nth-child(1) { animation-delay: 0.05s; }
+.card > *:nth-child(2) { animation-delay: 0.12s; }
+.card > *:nth-child(3) { animation-delay: 0.19s; }
+.card > *:nth-child(4) { animation-delay: 0.26s; }
+.card > *:nth-child(5) { animation-delay: 0.33s; }
+.card > *:nth-child(6) { animation-delay: 0.40s; }
+.card > *:nth-child(7) { animation-delay: 0.47s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .avatar {
@@ -25,23 +49,115 @@ body {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow:
+    0 0 0 4px #0a0a0a,
+    0 0 0 5px #333,
+    0 0 40px rgba(255, 255, 255, 0.08);
 }
 
-h1 { margin: 16px 0 4px; }
-.role { margin: 0; color: #94a3b8; }
-.school { margin: 4px 0 24px; color: #94a3b8; }
+h1 {
+  margin: 24px 0 8px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.role {
+  font-size: 0.95rem;
+  color: #a3a3a3;
+}
+
+.school {
+  margin: 8px 0 30px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #666;
+}
 
 .btn {
   display: block;
   margin: 10px 0;
-  padding: 12px;
-  border-radius: 10px;
-  background: #3b82f6;
-  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #fff;
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.btn.outline { background: transparent; border: 2px solid #3b82f6; }
+.btn:hover {
+  background: #ececec;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.12);
+}
+.btn:active { transform: translateY(0); }
 
-.links { list-style: none; padding: 0; margin-top: 24px; }
-.links a { color: #93c5fd; text-decoration: none; line-height: 2; }
+.btn.outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #333;
+}
+.btn.outline:hover {
+  background: #111;
+  border-color: #fff;
+  box-shadow: none;
+}
+
+.links {
+  list-style: none;
+  margin-top: 30px;
+  border-top: 1px solid #1f1f1f;
+}
+.links li { border-bottom: 1px solid #1f1f1f; }
+
+.links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 6px;
+  color: #d4d4d4;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: color 0.2s ease, padding 0.2s ease;
+}
+.links a::after {
+  content: "↗";
+  color: #555;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.links a:hover {
+  color: #fff;
+  padding-left: 12px;
+}
+.links a:hover::after {
+  color: #fff;
+  transform: translate(2px, -2px);
+}
+
+a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .card { padding: 36px 22px 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card > * { animation: none; }
+  * { transition: none !important; }
+}
+
+.links a.copy::after {
+  content: "Copy";
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+.links a.copy:hover::after { transform: none; }
+.links a.copy.copied::after {
+  content: "Copied ✓";
+  color: #fff;
+}
